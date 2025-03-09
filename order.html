@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Dịch Vụ - Game Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .service-info {
+            background: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .service-info p {
+            margin: 5px 0;
+            font-size: 15px;
+        }
+
+        .btn-facebook {
+            width: 100%;
+            padding: 12px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .btn-facebook:hover {
+            background: #166fe5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Đặt Dịch Vụ Game</h2>
+        
+        <div class="service-info" id="serviceInfo">
+            <!-- Thông tin dịch vụ sẽ được điền bởi JavaScript -->
+        </div>
+
+        <!-- Thay YOUR_FACEBOOK_URL bằng link Facebook của bạn -->
+        <button onclick="window.location.href='https://www.facebook.com/profile.php?id=61560419824346'" class="btn-facebook">
+            Liên Hệ Qua Facebook
+        </button>
+    </div>
+
+    <script>
+        function getServiceInfo() {
+    const params = new URLSearchParams(window.location.search);
+    const game = "Blox Fruit";  // Sửa thành Blox Fruit
+    const service = params.get('service');
+    
+    const serviceInfoDiv = document.getElementById('serviceInfo');
+    if (game && service) {
+        serviceInfoDiv.innerHTML = `
+            <p><strong>Game:</strong> ${game}</p>
+            <p><strong>Dịch vụ:</strong> ${service}</p>
+        `;
+    }
+}
+        window.onload = getServiceInfo;
+    </script>
+</body>
+</html>
