@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch Vụ Cày Thuê - SunNetWork Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+
+        /* Header Styles */
+        .header {
+            background: #1a1a1a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-container a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 15px;
+            transition: color 0.3s;
+        }
+
+        .nav-container a:hover {
+            color: #4CAF50;
+        }
+
+        /* Info Bar */
+        .info-bar {
+            background: #f8f9fa;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item i {
+            color: #4CAF50;
+        }
+
+        /* Main Banner */
+        .main-banner {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .main-banner h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .main-banner p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #4CAF50;
+        }
+
+        .service-list {
+            list-style: none;
+        }
+
+        .service-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .service-list li:last-child {
+            border-bottom: none;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .order-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #45a049;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            margin-top: 40px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+
+        .footer-section p {
+            margin: 10px 0;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .info-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html">SunNetWork Shop</a>
+            <nav>
+                <a href="index.html">Trang Chủ</a>
+                <a href="caythue.html">Cày Thuê</a>
+                <a href="accounts.html">Bán Account</a>
+                <a href="gamepass.html">Game Pass</a>
+                <a href="#contact">Liên Hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Info Bar -->
+    <div class="info-bar">
+        <div class="info-container">
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <span>Hotline: 0123.456.789</span>
+            </div>
+            <div class="info-item">
+                <i class="fab fa-facebook"></i>
+                <span>Facebook: Shop Game</span>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <span>Hoạt động: 24/7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Banner -->
+    <div class="main-banner">
+        <h1>Dịch Vụ Cày Thuê</h1>
+        <p>Đội ngũ cày thuê chuyên nghiệp, uy tín</p>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-container">
+        <div class="service-grid">
+            <!-- Farm Levels -->
+            <div class="service-card">
+                <h2 class="service-title">Farm Levels</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>Lv 1 - 700</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Lv 700 - 1500</span>
+                        <span class="price">15,000đ</span>
+                    </li>
+                    <li>
+                        <span>Lv 1500 - Max</span>
+                        <span class="price">15,000đ</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=Farm Levels&price=10,000đ" class="order-btn">ĐẶT NGAY</a>
+            </div>
+
+            <!-- Raid -->
+            <div class="service-card">
+                <h2 class="service-title">Raid</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>Raid Fruit Thường (Max Chiều)</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Fruit Đặc Biệt (Max Chiều)</span>
+                        <span class="price">20,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Kiếm Điểm F: 10k F</span>
+                        <span class="price">10,000đ</span>
+                    </li>
+                    <li>
+                        <span>Raid Kiếm Điểm F: 100k F</span>
+                        <span class="price">70,000đ</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=Raid Fruit Thường&price=10,000đ" class="order-btn">ĐẶT NGAY</a>
+            </div>
+
+            <!-- Nhiệm Vụ Items -->
+            <div class="service-card">
+                <h2 class="service-title">Nhiệm Vụ Items</h2>
+                <ul class="service-list">
+                    <li>
+                        <span>CDK</span>
+                        <span class="price">30,000đ (Bao 2 thanh)</span>
+                    </li>
+                    <li>
+                        <span>Soul Guitar</span>
+                        <span class="price">15,000đ - 20,000đ</span>
+                    </li>
+                    <li>
+                        <span>Ấn Đặt Ngay Để Biết Thêm</span>
+                    </li>
+                </ul>
+                <a href="order-form.html?service=CDK&price=30,000đ" class="order-btn">ĐẶT NGAY</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Liên Hệ</h3>
+                <p><i class="fas fa-phone"></i> Hotline: ytbherolegends@gmail.com</p>
+                <p><i class="fab fa-facebook"></i> Facebook: <a href="https://www.facebook.com/profile.php?id=61560419824346" target="_blank">SunNW Shop</a></p>
+                <p><i class="fab fa-facebook-messenger"></i> Messenger: <a href="#" target="_blank">Nhắn tin ngay</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Thời Gian Hoạt Động</h3>
+                <p><i class="fas fa-clock"></i> Phục vụ: 24/7</p>
+                <p><i class="fas fa-headset"></i> Hỗ trợ: 8:00 - 22:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Thông Tin</h3>
+                <p>Cung cấp dịch vụ game uy tín, chất lượng</p>
+                <p>Đội ngũ hỗ trợ nhiệt tình, chuyên nghiệp</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
+</body>
+</html>

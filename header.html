@@ -1,0 +1,45 @@
+<header class="main-header">
+    <div class="container">
+        <div class="logo">
+            <a href="index.html">Logo Shop</a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="services.html">Dịch vụ</a></li>
+                <li><a href="deposit.html">Nạp tiền</a></li>
+            </ul>
+        </nav>
+        <div class="user-info" id="userInfoHeader">
+            <!-- Phần này sẽ được JavaScript điền thông tin -->
+        </div>
+    </div>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const userInfo = JSON.parse(localStorage.getItem('userInfo')) || null;
+    const userInfoHeader = document.getElementById('userInfoHeader');
+    
+    if (userInfo) {
+        userInfoHeader.innerHTML = `
+            <div class="user-panel">
+                <span class="username">${userInfo.username}</span>
+                <span class="balance">${userInfo.balance.toLocaleString()}đ</span>
+                <div class="user-menu">
+                    <a href="dashboard.html">Đơn hàng của tôi</a>
+                    <a href="deposit.html">Nạp tiền</a>
+                    <a href="#" onclick="logout()">Đăng xuất</a>
+                </div>
+            </div>
+        `;
+    } else {
+        userInfoHeader.innerHTML = `
+            <div class="auth-buttons">
+                <a href="login.html" class="btn-login">Đăng nhập</a>
+                <a href="register.html" class="btn-register">Đăng ký</a>
+            </div>
+        `;
+    }
+});
+</script>

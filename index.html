@@ -1,0 +1,210 @@
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>Game Services</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">Trang chủ</a>
+                <a href="caythue.html">Cày Thuê</a>
+                <a href="gamepass.html">Game Pass</a>
+                <a href="accounts.html">Bán Account</a>
+                <a href="contact.html">Liên Hệ</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="hero-section">
+            <h2>Chào mừng đến với Dịch Vụ Game</h2>
+            <p>Cung cấp các dịch vụ game uy tín, chất lượng</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="caythue.png" alt="Cày Thuê">
+                <h3>Dịch Vụ Cày Thuê</h3>
+                <p>Cày thuê items, nhiệm vụ game uy tín</p>
+                <button class="buy-button" onclick="window.location.href='caythue.html'">Xem chi tiết</button>
+            </div>
+
+            <div class="service-card">
+                <img src="acc.png" alt="Account">
+                <h3>Bán Account Game</h3>
+                <p>Account game đa dạng, giá tốt</p>
+                <button class="buy-button" onclick="window.location.href='accounts.html'">Xem chi tiết</button>
+            </div>
+
+            <div class="service-card">
+                <img src="gamepass.png" alt="Game Pass">
+                <h3>Game Pass</h3>
+                <p>Cung cấp game pass các loại</p>
+                <button class="buy-button" onclick="window.location.href='gamepass.html'">Xem chi tiết</button>
+            </div>
+        </div>
+
+        <!-- Top Up Table -->
+        <div class="top-up-table">
+            <h3>Bảng Top Nạp</h3>
+            <table>
+                <tr>
+                    <th>Người dùng</th>
+                    <th>Số tiền</th>
+                </tr>
+                <tr>
+                    <td>User1</td>
+                    <td>1,000,000đ</td>
+                </tr>
+                <tr>
+                    <td>User2</td>
+                    <td>800,000đ</td>
+                </tr>
+                <!-- Thêm các hàng khác nếu cần -->
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="contact-info">
+            <p>📞 Hotline: 0123.456.789</p>
+            <p>✉️ Email: contact@gameservices.com</p>
+            <p>🔗 Facebook: facebook.com/gameservices</p>
+            <p>📱 Zalo: 0123.456.789</p>
+        </div>
+    </footer>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            animation: backgroundAnimation 10s infinite alternate, fadeIn 1s ease-in-out;
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-links a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff6347;
+            transform: scale(1.1);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card h3 {
+            margin: 15px;
+        }
+
+        .service-card p {
+            margin: 0 15px 15px;
+        }
+
+        .buy-button {
+            display: block;
+            width: calc(100% - 30px);
+            margin: 0 15px 15px;
+            padding: 10px;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .buy-button:hover {
+            background-color: #e5533d;
+            transform: scale(1.05);
+        }
+
+        .top-up-table {
+            margin-top: 40px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .top-up-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .top-up-table th, .top-up-table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</body> 

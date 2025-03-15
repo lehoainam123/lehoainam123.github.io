@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý đơn hàng</title>
+    <style>
+        .dashboard-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+        .order-list {
+            margin-top: 20px;
+        }
+        .order-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .order-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        .status-pending { color: #ffc107; }
+        .status-completed { color: #28a745; }
+        .status-cancelled { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <h2>Quản lý đơn hàng</h2>
+        <button class="logout-btn" onclick="logout()">Đăng xuất</button>
+        <div id="orderList" class="order-list">
+            <!-- Đơn hàng sẽ được hiển thị ở đây -->
+        </div>
+    </div>
+
+    <script>
+        // Kiểm tra đăng nhập
+        if (!localStorage.getItem('userInfo')) {
+            window.location.href = 'login.html';
+        }
+
+        // Lấy danh sách đơn hàng
+        async function fetchOrders() {
+            try {
+                const response = await fetch('YOUR_SCRIPT_URL', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        action: 'getOrders',
+                        username: JSON.parse(localStorage.getItem('userInfo')).username
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayOrders(result.orders);
+                } else {
+                    throw new Error('Không thể lấy danh sách đơn hàng');
+                }
+            } catch (error) {
+                console.error('Lỗi khi lấy danh sách đơn hàng:', error);
+            }
+        }
+
+        // Hiển thị đơn hàng
+        function displayOrders(orders) {
+            const ordersList = document.getElementById('orderList');
+            ordersList.innerHTML = orders.map(order => `
+                <div class="order-card">
+                    <h3>${order.service}</h3>
+                    <p>Giá: ${order.price}</p>
+                    <p>Thời gian: ${new Date(order.timestamp).toLocaleString()}</p>
+                    <p>Trạng thái: <span class="status-${order.status.toLowerCase()}">${order.status}</span></p>
+                    <p>Ghi chú: ${order.notes}</p>
+                </div>
+            `).join('');
+        }
+
+        // Đăng xuất
+        function logout() {
+            localStorage.removeItem('userInfo');
+            window.location.href = 'login.html';
+        }
+
+        // Load đơn hàng khi trang được tải
+        document.addEventListener('DOMContentLoaded', fetchOrders);
+    </script>
+</body>
+</html> 

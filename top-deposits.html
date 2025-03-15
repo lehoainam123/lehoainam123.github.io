@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Nạp Tiền</title>
+    <style>
+        .top-deposits-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-deposits-container">
+        <h2>Top Nạp Tiền</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Thứ hạng</th>
+                    <th>Tên người dùng</th>
+                    <th>Số tiền</th>
+                    <th>Thời gian</th>
+                </tr>
+            </thead>
+            <tbody id="topDepositsTable">
+                <!-- Dữ liệu sẽ được điền bởi JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchTopDeposits() {
+            try {
+                const response = await fetch('https://script.google.com/macros/s/AKfycbz3xgEOGSS1AXUNoDWnvULexhKUYeAphU3Uia47YoBBsMqKMzkhtLTTYPez9Aye_7mmoA/exec', {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'getTopDeposits' })
+                });
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    displayTopDeposits(result.topDeposits);
+                } else {
+                    throw new Error('Không thể lấy dữ liệu top nạp tiền');
+                }
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu top nạp tiền:', error);
+            }
+        }
+
+        function displayTopDeposits(deposits) {
+            const depositsList = document.getElementById('topDepositsTable');
+            depositsList.innerHTML = deposits.map((deposit, index) => `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td>${deposit[1]}</td>
+                    <td>${deposit[2].toLocaleString()}đ</td>
+                    <td>${new Date(deposit[0]).toLocaleString()}</td>
+                </tr>
+            `).join('');
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchTopDeposits);
+    </script>
+</body>
+</html> 
